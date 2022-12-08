@@ -4,11 +4,15 @@ $( document ).ready(function($) {
     'use strict';
 
     function writeCards(cards) {
-        var completedCards = '';
-        var plannedCards = '';
+        var completedCards = 'n/a';
+        var inProgressCards = 'n/a';
+        var plannedCards = 'n/a';
         console.log('cards: ' + cards)
         for (var i = 0; i < cards.length; i++) {
             if(cards[i].attributes.status === 'Complete') {
+                if (completedCards === 'n/a') {
+                    completedCards = '';
+                }
                 completedCards += "<div class='card'>" +
                 "<div class='card-body'>" +
                 "<a class='card-link' href='"+cards[i].attributes.href+"'>"+cards[i].attributes.name+"</a>" +
@@ -18,6 +22,21 @@ $( document ).ready(function($) {
                 "</div>";
             }
             if(cards[i].attributes.status === 'In Progress') {
+                if (inProgressCards === 'n/a') {
+                    inProgressCards = '';
+                }
+                inProgressCards += "<div class='card'>" +
+                "<div class='card-body'>" +
+                "<a class='card-link' href='"+cards[i].attributes.href+"'>"+cards[i].attributes.name+"</a>" +
+                "<p class='card-text'>"+ cards[i].attributes.description + "<br/><b>" +
+                    cards[i].attributes.keywords + "</b></p>" +
+                "</div>" +
+                "</div>";
+            }
+            if(cards[i].attributes.status === 'Planned') {
+                if (plannedCards === 'n/a') {
+                    plannedCards = '';
+                }
                 plannedCards += "<div class='card'>" +
                 "<div class='card-body'>" +
                 "<a class='card-link' href='"+cards[i].attributes.href+"'>"+cards[i].attributes.name+"</a>" +
@@ -28,6 +47,7 @@ $( document ).ready(function($) {
             }
         }
         $('#indexIntegrations').html(completedCards);
+        $('#indexInProgressIntegrations').html(inProgressCards);
         $('#indexPlannedIntegrations').html(plannedCards);
 
     }
@@ -41,7 +61,8 @@ $( document ).ready(function($) {
         $('#indexTitle').html(data.data.attributes.title);
         $('#indexDescription').html(data.data.attributes.description);
         $('#indexIntegrationsLabel').html(data.data.attributes.integrationsLabel);
-        writeIntegrations(data.data.attributes.integrations)
+        $('#indexInProgressIntegrationsLabel').html(data.data.attributes.integerationsInProgressLabel);
         $('#indexPlannedIntegrationsLabel').html(data.data.attributes.plannedIntegrationsLabel);
+        writeIntegrations(data.data.attributes.integrations)
     });
 });
