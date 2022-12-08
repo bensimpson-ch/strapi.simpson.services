@@ -1,14 +1,14 @@
 {
-  "kind": "collectionType",
-  "collectionName": "integrations",
+  "kind": "singleType",
+  "collectionName": "githubs",
   "info": {
-    "singularName": "integration",
-    "pluralName": "integrations",
-    "displayName": "Integration",
+    "singularName": "github",
+    "pluralName": "githubs",
+    "displayName": "Github",
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "name": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,13 +24,10 @@
       },
       "type": "string"
     },
-    "keywords": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
+    "integrations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::integration.integration"
     },
     "description": {
       "pluginOptions": {
@@ -40,26 +37,23 @@
       },
       "type": "text"
     },
-    "href": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
-    },
-    "status": {
+    "integrationsLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
-      "enum": [
-        "Planned",
-        "In Progress",
-        "Complete"
-      ]
+      "type": "string",
+      "default": "Integrations"
+    },
+    "plannedIntegrationsLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "Planned Integrations"
     }
   }
 }
