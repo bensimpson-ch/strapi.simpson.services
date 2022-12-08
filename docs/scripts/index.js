@@ -2,17 +2,39 @@
 
 $( document ).ready(function($) {
     'use strict';
-    function writeIntegrations(integrations) {
-        for (var i = 0; i < integrations.data.length; i++) {
-            var card = "<div class='card'>" +
+
+    function writeCards(cards) {
+        var completedCards = '';
+        var plannedCards = '';
+        console.log('cards: ' + cards)
+        for (var i = 0; i < cards.length; i++) {
+            if(cards[i].attributes.status === 'Complete') {
+                completedCards += "<div class='card'>" +
                 "<div class='card-body'>" +
-                "<a class='card-link' href='"+integrations.data[i].attributes.href+"'>"+integrations.data[i].attributes.name+"</a>" +
-                    "<p class='card-text'>"+ integrations.data[i].attributes.description + "<br/><b>" +
-                    integrations.data[i].attributes.keywords + "</b></p>" +
+                "<a class='card-link' href='"+cards[i].attributes.href+"'>"+cards[i].attributes.name+"</a>" +
+                "<p class='card-text'>"+ cards[i].attributes.description + "<br/><b>" +
+                    cards[i].attributes.keywords + "</b></p>" +
                 "</div>" +
-            "</div>";
-           $('#indexIntegrations').html(card)
+                "</div>";
+            }
+            if(cards[i].attributes.status === 'In Progress') {
+                plannedCards += "<div class='card'>" +
+                "<div class='card-body'>" +
+                "<a class='card-link' href='"+cards[i].attributes.href+"'>"+cards[i].attributes.name+"</a>" +
+                "<p class='card-text'>"+ cards[i].attributes.description + "<br/><b>" +
+                    cards[i].attributes.keywords + "</b></p>" +
+                "</div>" +
+                "</div>";
+            }
         }
+        $('#indexIntegrations').html(completedCards);
+        $('#indexPlannedIntegrations').html(plannedCards);
+
+    }
+
+    function writeIntegrations(data) {
+        console.log(data.data.length);
+        writeCards(data.data);
     }
 
     $.getJSON("https://strapi.simpson.services/api/github?populate=*", function (data) {
