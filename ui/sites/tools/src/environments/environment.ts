@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //override this for local development https://strapi.simpson.services/api or http://localhost:1337/api
+  api: "/api"
 };
 
 /*
