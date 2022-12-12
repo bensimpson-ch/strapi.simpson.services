@@ -1,0 +1,6 @@
+@startuml
+
+Strapi - [Springboot - REST]
+[Springboot - REST] ..> Frontend : use
+
+@enduml
