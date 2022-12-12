@@ -54,6 +54,15 @@
       },
       "type": "string",
       "default": "Planned Integrations"
+    },
+    "integerationsInProgressLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "In Progress Integrations"
     }
   }
 }
