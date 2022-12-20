@@ -42,6 +42,8 @@
         <module>domain</module>
         <module>application</module>
         <module>rest</module>
+        <module>persistence</module>
+        <module>dropbox-adapter</module>
         <module>spring</module>
     </modules>
 
