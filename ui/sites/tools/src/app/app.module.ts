@@ -5,13 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ThemeModule} from "./theme/theme.module";
+import {MarkdownModule} from "ngx-markdown";
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, AppRoutingModule, ThemeModule
+    BrowserModule, BrowserAnimationsModule, AppRoutingModule, ThemeModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

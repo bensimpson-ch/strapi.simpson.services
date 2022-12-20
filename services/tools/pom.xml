@@ -44,6 +44,7 @@
         <module>rest</module>
         <module>persistence</module>
         <module>dropbox-adapter</module>
+        <module>integration-tests</module>
         <module>spring</module>
     </modules>
 

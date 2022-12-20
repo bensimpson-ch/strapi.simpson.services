@@ -1,6 +1,6 @@
 import {ContentSelector} from "../../domain/content-selector";
 
-export class Content implements ContentSelector {
+export class HeaderContent implements ContentSelector {
   selector: string = 'tools-theme';
   brand: string | undefined;
 

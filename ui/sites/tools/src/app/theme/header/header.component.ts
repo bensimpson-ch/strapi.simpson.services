@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Content} from "./content";
+import {HeaderContent} from "./header-content";
 import {ContentService} from "../../services/content.service";
 
 @Component({
@@ -7,8 +7,8 @@ import {ContentService} from "../../services/content.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
-  content: Content = new Content();
+export class HeaderComponent implements OnInit {
+  content: HeaderContent = new HeaderContent();
 
   constructor(private contentService: ContentService) {
   }
